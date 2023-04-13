@@ -17,8 +17,9 @@ It will only listen for impulses coming from the user running it.
 
 ### Impluses
 
-* `<userID>.Puppeteer.Start` `Slot` - Starts the cloning/puppeting process. The slot passed should include a dynamic variable space containing all the variables listed below.
-* `<userID>.Puppeteer.Start` `Slot` - Stops the cloning/puppeting process on a slot that `Start` was previously called on.
+* `<userID>.Puppeteer.Start` `Slot` - Starts the cloning/puppeting process. The slot passed should include a dynamic variable space containing all the variables listed below. If the process has already started this does nothing.
+* `<userID>.Puppeteer.Refresh` `Slot` - Performs a deep refresh of everything including source, template and variable changes
+* `<userID>.Puppeteer.Stop` `Slot` - Stops the cloning/puppeting process on a slot that `Start` was previously called on.
 * `<userID>.Puppeteer.Error` `string` - Called by the plugin when it encounters an internal error, used for debugging
 
 To stop the puppeting process, simply destroy the slot passed in to `<userID>.Puppeteer`
@@ -30,17 +31,19 @@ To stop the puppeting process, simply destroy the slot passed in to `<userID>.Pu
 * `Template` `Slot` - A slot containing components that will serve as the template for all cloned slots.
 * `Include` `string` - What slots and components should be cloned over, see options below
 * `Puppet` `string` - What fields should be puppeted by the original object, see options below
-* `Live` `bool` - If false the clone will only happen once, if true the clone will be kept updated
-* `Frequency` `float` - Updates will happen every X seconds, if not included updates happen every frame
+* `Live` `bool` - If false the clone will only happen once, if true the system will monitor for added/deleted slots. This does not track any other changes.
+* `Frequency` `float` - Live updates will happen every X seconds, if not included updates happen every frame
 * `KeepEmptySlots` `bool` - If true keep slots even if they have no components or children
 
-Include Options:
+#### Include Options
 
 * `<comma seperate list of component names>` - Copies over only the specified components
 * `Puppeteer.MeshRenderers` - Will only clone `MeshRenderers` and `SkinnedMeshRenderer` components
 * `Puppeteer.Everything` - Copies everything 
 
-Puppet Options:
+Regardless of options provided, `SimpleAvatarProtection` components will always be copied.
+
+#### Puppet Options
 
 * `Puppeteer.Transform` - Copies over position, rotation and scale
 * `Puppeteer.Template` - On every slot looks for a `ValueField<Slot>` called `Puppeteer.Source` and writes the source of the current slot to it
