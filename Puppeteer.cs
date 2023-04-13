@@ -25,5 +25,10 @@ namespace Puppeteer
             Harmony harmony = new Harmony("net.nullreff.puppeteer");
             harmony.PatchAll();
         }
+
+        class ClonePatch
+        {
+            
+        }
     }
 }
