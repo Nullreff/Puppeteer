@@ -46,4 +46,4 @@ Regardless of options provided, `SimpleAvatarProtection` components will always 
 #### Puppet Options
 
 * `Puppeteer.Transform` - Copies over position, rotation and scale
-* `Puppeteer.Template` - On every slot looks for a `ValueField<Slot>` called `Puppeteer.Source` and writes the source of the current slot to it
+* `Puppeteer.Template` - On every slot looks for a `ReferenceField<Slot>` called `Puppeteer.Source` and writes the source of the current slot to it
