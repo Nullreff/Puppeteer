@@ -22,7 +22,7 @@ It will only listen for impulses coming from the user running it.
 * `<userID>.Puppeteer.Stop` `Slot` - Stops the cloning/puppeting process on a slot that `Start` was previously called on.
 * `<userID>.Puppeteer.Error` `string` - Called by the plugin when it encounters an internal error, used for debugging
 
-To stop the puppeting process, simply destroy the slot passed in to `<userID>.Puppeteer`
+Alternatively to stop the puppeting process, simply destroy the slot passed in to `<userID>.Puppeteer.Start`
 
 ### Variables
 
