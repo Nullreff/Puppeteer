@@ -17,10 +17,17 @@ It will only listen for impulses coming from the user running it.
 
 ### Impluses
 
+#### Sent
+
+* `<userID>.Puppeteer.Available` - Check if the plugin is enabled, will send an impulse to `<userID>.Puppeteer.Output` if it is.
 * `<userID>.Puppeteer.Start` `Slot` - Starts the cloning/puppeting process. The slot passed should include a dynamic variable space containing all the variables listed below. If the process has already started this does nothing.
 * `<userID>.Puppeteer.Refresh` `Slot` - Performs a deep refresh of everything including source, template and variable changes
 * `<userID>.Puppeteer.Stop` `Slot` - Stops the cloning/puppeting process on a slot that `Start` was previously called on.
-* `<userID>.Puppeteer.Error` `string` - Called by the plugin when it encounters an internal error, used for debugging
+
+#### Received
+
+* `<userID>.Puppeteer.Output` `string` - Called by the plugin after a successful impulse
+* `<userID>.Puppeteer.Error` `string` - Called by the plugin when it encounters an internal error
 
 Alternatively to stop the puppeting process, simply destroy the slot passed in to `<userID>.Puppeteer.Start`
 
